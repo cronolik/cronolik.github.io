@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="喝水哥 - 每日饮水提醒与健康管理助手。提供个性化喝水计划、饮水记录统计、健康饮水建议及相关资讯，帮助养成科学饮水习惯。">
+    <meta name="keywords" content="喝水哥,喝水提醒,每日喝水,健康饮水,饮水记录,喝水计划">
+    <title>喝水哥-每日饮水提醒与健康管理助手</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #00b4d8;
+            --primary-dark: #0077b6;
+            --accent-color: #90e0ef;
+            --text-main: #2b2d42;
+            --text-light: #8d99ae;
+            --bg-body: #f8f9fa;
+            --bg-card: #ffffff;
+            --success-color: #48bb78;
+            --warning-color: #ed8936;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--bg-card);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-block;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.4) 2px, transparent 2px);
+            background-size: 30px 30px;
+            opacity: 0.5;
+            animation: moveBackground 60s linear infinite;
+        }
+
+        @keyframes moveBackground {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(30px, 30px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+        }
+
+        /* Feature Grid */
+        .features {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(0, 180, 216, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+            font-size: 1.25rem;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Interactive Demo Section */
+        .demo-section {
+            background-color: var(--bg-card);
+            padding: 80px 0;
+            border-top: 1px solid #eee;
+        }
+
+        .demo-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .demo-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .demo-text h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .demo-text p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        .demo-visual {
+            flex: 1;
+            min-width: 300px;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .water-glass {
+            width: 150px;
+            height: 220px;
+            border: 4px solid var(--primary-color);
+            border-top: none;
+            border-radius: 0 0 20px 20px;
+            position: relative;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .water-level {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--primary-color);
+            opacity: 0.6;
+            transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 0%;
+        }
+
+        .water-wave {
+            position: absolute;
+            top: -10px;
+            left: 0;
+            width: 200%;
+            height: 20px;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="%23ffffff" fill-opacity="0.4"/></svg>');
+            background-size: 50% 100%;
+            animation: wave 3s linear infinite;
+        }
+
+        @keyframes wave {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .stats-display {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+        }
+
+        .stats-label {
+            color: var(--text-light);
+        }
+
+        .btn-action {
+            background-color: var(--primary-dark);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: opacity 0.3s;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-action:hover {
+            opacity: 0.9;
+        }
+
+        /* Health Tips */
+        .tips-section {
+            padding: 80px 0;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .tip-card {
+            background: white;
+            padding: 25px;
+            border-radius: var(--radius-md);
+            border-left: 5px solid var(--primary-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .tip-card h4 {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .tip-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* FAQ */
+        .faq-section {
+            background-color: #f1f5f9;
+            padding: 80px 0;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 15px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .faq-question:hover {
+            background-color: #fafafa;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 20px;
+            color: var(--text-light);
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding-bottom: 20px;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1e293b;
+            color: #cbd5e1;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            nav {
+                display: none;
+            }
+
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .demo-container {
+                flex-direction: column-reverse;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <span>💧</span> 喝水哥
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#features">功能介绍</a></li>
+                    <li><a href="#demo">在线体验</a></li>
+                    <li><a href="#tips">饮水指南</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+            <a href="#demo" class="btn-primary">立即喝水</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-content">
+                <h1>科学饮水，从“喝水哥”开始</h1>
+                <p>告别口渴才喝水的习惯。喝水哥为您提供智能提醒、精准记录与个性化饮水建议，助您保持每日最佳水合状态。</p>
+                <a href="#demo" class="btn-primary">开启我的饮水计划</a>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <div class="container">
+                <h2 class="section-title">喝水哥核心功能</h2>
+                <div class="feature-grid">
+                    <article class="feature-card">
+                        <div class="feature-icon">🔔</div>
+                        <h3>智能定时提醒</h3>
+                        <p>根据您的作息时间自动设定提醒，防止遗忘。支持自定义饮水频率与间隔，完美适配忙碌生活。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>可视化数据统计</h3>
+                        <p>直观的图表展示本周/月饮水趋势，帮助您了解身体水分摄入情况，及时发现饮水不足。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">💪</div>
+                        <h3>健康饮水建议</h3>
+                        <p>基于体重、活动量及环境温度，智能推荐每日饮水量，科学补水更健康。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">🏆</div>
+                        <h3>养成打卡习惯</h3>
+                        <p>连续打卡排行榜与成就徽章系统，让喝水变成一种有趣且值得坚持的游戏。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Demo Section -->
+        <section id="demo" class="demo-section">
+            <div class="container demo-container">
+                <div class="demo-text">
+                    <h2>实时体验您的今日饮水量</h2>
+                    <p>喝水哥不仅仅是记录工具，更是您身体的伴侣。点击下方按钮模拟一次饮水动作，感受即时反馈带来的成就感。</p>
+                    <ul style="margin-top: 20px; color: var(--text-light);">
+                        <li style="margin-bottom: 10px;">✅ 精确记录每次摄入量</li>
+                        <li style="margin-bottom: 10px;">✅ 实时更新身体水合状态</li>
+                        <li>✅ 支持多种饮品单位换算</li>
+                    </ul>
+                </div>
+                <div class="demo-visual">
+                    <div class="water-glass">
+                        <div class="water-level" id="waterLevel"></div>
+                        <div class="water-wave"></div>
+                    </div>
+                    <div class="stats-display">
+                        <span id="currentVolume">0</span><span style="font-size: 1.5rem;">%</span>
+                    </div>
+                    <div class="stats-label">今日目标完成度</div>
+                    <div style="margin-top: 20px; display: flex; gap: 10px;">
+                        <button class="btn-action" onclick="addWater(200)">+200ml</button>
+                        <button class="btn-action" onclick="addWater(500)">+500ml</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips Section -->
+        <section id="tips" class="tips-section">
+            <div class="container">
+                <h2 class="section-title">科学饮水小贴士</h2>
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <h4>晨起一杯水</h4>
+                        <p>起床后空腹喝一杯温水，有助于补充夜间流失水分，促进肠胃蠕动。</p>
+                    </div>
+                    <div class="tip-card">
+                        <h4>少量多次</h4>
+                        <p>不要一次性大量饮水，建议分时段少量多次饮用，吸收效果更佳。</p>
+                    </div>
+                    <div class="tip-card">
+                        <h4>警惕口渴信号</h4>
+                        <p>感到口渴时身体已处于轻度脱水状态，应主动及时补充水分。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="faq-section">
+            <div class="container faq-container">
+                <h2 class="section-title">常见问题解答</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">喝水哥需要付费吗？</div>
+                    <div class="faq-answer">
+                        基础的饮水记录、提醒功能和数据统计完全免费。高级的个性化健康分析和云同步功能需订阅会员服务。
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">如何设置每日目标水量？</div>
+                    <div class="faq-answer">
+                        在“我的”页面中点击“设置目标”，系统会根据您的身高、体重和活动情况提供推荐值，您也可以手动调整。
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">支持哪些设备同步？</div>
+                    <div class="faq-answer">
+                        喝水哥支持 iOS、Android 手机端应用以及网页端同步。数据会自动上传至云端，多设备间实时互通。
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo" style="margin-bottom: 15px; display:inline-block;">
+                        <span>💧</span> 喝水哥
+                    </a>
+                    <p style="font-size: 0.9rem; line-height: 1.8;">
+                        喝水哥致力于通过数字化工具帮助用户建立科学健康的饮水习惯。每一滴水，都是对身体的关爱。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>产品</h4>
+                    <ul>
+                        <li><a href="#">功能介绍</a></li>
+                        <li><a href="#">下载应用</a></li>
+                        <li><a href="#">网页版</a></li>
+                        <li><a href="#">更新日志</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>支持</h4>
+                    <ul>
+                        <li><a href="#">帮助中心</a></li>
+                        <li><a href="#">联系客服</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">用户协议</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关注我们</h4>
+                    <ul>
+                        <li><a href="#">微信公众号</a></li>
+                        <li><a href="#">微博</a></li>
+                        <li><a href="#">小红书</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 喝水哥 All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Interactive Logic for Demo
+        let currentPercentage = 0;
+        const targetPercentage = 100;
+        const displayElement = document.getElementById('currentVolume');
+        const levelElement = document.getElementById('waterLevel');
+
+        function addWater(amount) {
+            if (currentPercentage >= targetPercentage) {
+                alert("今日目标已达成！您非常健康，继续保持！🎉");
+                return;
+            }
+
+            // Simulate adding water (simple logic for demo)
+            currentPercentage = Math.min(currentPercentage + (amount / 10), targetPercentage);
+            
+            // Visual update
+            levelElement.style.height = currentPercentage + '%';
+            
+            // Text update with animation effect
+            animateValue(displayElement, parseInt(displayElement.innerText), Math.floor(currentPercentage), 500);
+        }
+
+        function animateValue(obj, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.innerHTML = Math.floor(progress * (end - start) + start);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // FAQ Accordion Logic
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            item.querySelector('.faq-question').addEventListener('click', () => {
+                // Close others
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) otherItem.classList.remove('active');
+                });
+                // Toggle current
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
