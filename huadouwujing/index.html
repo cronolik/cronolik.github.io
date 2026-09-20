@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="花都武警医院官方网站，提供权威医疗健康资讯、专家团队介绍、科室分类查询及预约挂号服务。致力于为花都及周边地区居民提供专业、高效、人性化的医疗服务。">
+    <meta name="keywords" content="花都武警医院,武警医院,花都武警医院官网,武警医院挂号,花都武警医院专家,武警医院骨科,武警医院内科">
+    <title>花都武警医院-权威医疗健康服务与预约挂号平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #004494;
+            --accent-color: #d32f2f;
+            --bg-light: #f8f9fa;
+            --text-dark: #333333;
+            --text-gray: #666666;
+            --white: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Utility */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: 1px solid var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+            text-align: center;
+            position: relative;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-gray);
+            margin-bottom: 40px;
+            font-size: 1rem;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .top-bar {
+            background-color: var(--bg-light);
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-info span {
+            margin-right: 15px;
+        }
+
+        .main-header {
+            padding: 20px 0;
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .logo small {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--text-gray);
+            letter-spacing: 1px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            font-weight: 500;
+            color: var(--text-dark);
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        .nav-menu a:hover::after, .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 86, 179, 0.8), rgba(0, 68, 148, 0.8)), url('https://picsum.photos/seed/hospital_bg/1920/600') center/cover no-repeat;
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        /* Quick Nav */
+        .quick-nav {
+            background-color: var(--white);
+            padding: 30px 0;
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .quick-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .quick-item {
+            background: var(--white);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s;
+            border: 1px solid #eee;
+        }
+
+        .quick-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .quick-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .quick-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .quick-item p {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+        }
+
+        /* News Section */
+        .news-section {
+            padding: 60px 0;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        .news-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .news-content {
+            padding: 20px;
+        }
+
+        .news-tag {
+            background-color: #e3f2fd;
+            color: var(--primary-color);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .news-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        .news-content p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .news-list {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 20px;
+        }
+
+        .news-list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .news-list-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-list-item a {
+            font-size: 1rem;
+            color: var(--text-dark);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            max-width: 80%;
+        }
+
+        .news-list-item a:hover {
+            color: var(--primary-color);
+        }
+
+        .news-date {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+        }
+
+        /* Departments Section */
+        .departments-section {
+            padding: 60px 0;
+            background-color: var(--bg-light);
+        }
+
+        .dept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .dept-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .dept-card:hover {
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+
+        .dept-card h3 {
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .dept-card p {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-bottom: 15px;
+        }
+
+        .dept-link {
+            color: var(--primary-color);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .dept-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Features */
+        .features-section {
+            padding: 60px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .feature-box {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #e3f2fd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .feature-text h4 {
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .feature-text p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #ccc;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-col p {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 5px;
+        }
+
+        .contact-info li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info li span {
+            margin-right: 10px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none; /* In a real app, this would be a hamburger menu */
+            }
+            .header-actions {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .quick-nav-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-info">
+                    <span>🏥 急救电话：120</span>
+                    <span>🕒 门诊时间：8:00 - 12:00, 14:00 - 17:00</span>
+                </div>
+                <div class="top-info">
+                    <a href="#">个人中心</a> | <a href="#">医院地图</a>
+                </div>
+            </div>
+        </div>
+        <div class="main-header">
+            <div class="container">
+                <div class="logo">
+                    花都武警医院
+                    <small>PEOPLE'S ARMY GENERAL HOSPITAL GUANGDZHOU</small>
+                </div>
+                <nav class="nav-menu">
+                    <a href="#" class="active">首页</a>
+                    <a href="#">医院概况</a>
+                    <a href="#">专家团队</a>
+                    <a href="#">科室导航</a>
+                    <a href="#">就医指南</a>
+                    <a href="#">健康资讯</a>
+                </nav>
+                <div class="header-actions">
+                    <a href="#" class="btn btn-primary">预约挂号</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>专业医疗 守护健康</h1>
+            <p>花都武警医院是集医疗、教学、科研、预防保健为一体的大型综合性医院。我们秉承“以人为本，科技兴院”的宗旨，为您的健康保驾护航。</p>
+            <div style="display: flex; gap: 15px; justify-content: center;">
+                <a href="#" class="btn btn-primary" style="background-color: var(--white); color: var(--primary-color);">在线预约</a>
+                <a href="#" class="btn btn-outline" style="border-color: var(--white); color: var(--white);">专家查询</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="quick-nav">
+        <div class="container">
+            <div class="quick-nav-grid">
+                <div class="quick-item">
+                    <div class="quick-icon">🩺</div>
+                    <h3>预约挂号</h3>
+                    <p>网上便捷挂号，免排队</p>
+                </div>
+                <div class="quick-item">
+                    <div class="quick-icon">👨‍⚕️</div>
+                    <h3>名医推荐</h3>
+                    <p>知名专家坐诊，专业诊疗</p>
+                </div>
+                <div class="quick-item">
+                    <div class="quick-icon">📋</div>
+                    <h3>检查报告</h3>
+                    <p>手机查看报告，便捷高效</p>
+                </div>
+                <div class="quick-item">
+                    <div class="quick-icon">🚗</div>
+                    <h3>停车服务</h3>
+                    <p>院内停车指引，车位充足</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <section class="news-section">
+            <div class="container">
+                <div class="section-title">医院动态</div>
+                <div class="section-subtitle">了解花都武警医院的最新医疗资讯与活动</div>
+                
+                <div class="news-grid">
+                    <div class="news-card">
+                        <img src="https://picsum.photos/seed/hospital_news/800/400" alt="医院新闻">
+                        <div class="news-content">
+                            <span class="news-tag">医院新闻</span>
+                            <h3>花都武警医院成功举办2024年度应急救援演练</h3>
+                            <p>为进一步提升医院应对突发公共卫生事件的能力，保障患者安全，花都武警医院于近日组织开展了全院范围内的应急救援演练。此次演练涵盖了创伤急救、危重症抢救等多个环节，全面检验了医院应急指挥系统和多科室协作能力...</p>
+                            <a href="#" class="btn btn-outline" style="padding: 5px 15px; font-size: 0.9rem;">阅读更多</a>
+                        </div>
+                    </div>
+                    
+                    <aside>
+                        <div class="news-list">
+                            <h3 style="margin-bottom: 15px; font-size: 1.1rem;">热门文章</h3>
+                            <div class="news-list-item">
+                                <a href="#">武警医院骨科中心开展微创手术新技术</a>
+                                <span class="news-date">10-24</span>
+                            </div>
+                            <div class="news-list-item">
+                                <a href="#">秋季养生指南：预防呼吸道疾病</a>
+                                <span class="news-date">10-23</span>
+                            </div>
+                            <div class="news-list-item">
+                                <a href="#">武警医院专家团队赴基层义诊</a>
+                                <span class="news-date">10-22</span>
+                            </div>
+                            <div class="news-list-item">
+                                <a href="#">关于优化门诊就诊流程的通知</a>
+                                <span class="news-date">10-21</span>
+                            </div>
+                            <div class="news-list-item">
+                                <a href="#">我院引进国际先进核磁共振设备</a>
+                                <span class="news-date">10-20</span>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section class="departments-section">
+            <div class="container">
+                <div class="section-title">特色科室</div>
+                <div class="section-subtitle">科室齐全，技术精湛，为您提供全方位医疗服务</div>
+                
+                <div class="dept-grid">
+                    <div class="dept-card">
+                        <h3>骨科中心</h3>
+                        <p>专注于创伤骨科、关节外科及运动医学，开展微创关节置换及复杂骨折修复手术。</p>
+                        <a href="#" class="dept-link">查看详情 &rarr;</a>
+                    </div>
+                    <div class="dept-card">
+                        <h3>心血管内科</h3>
+                        <p>拥有先进的急救设备，擅长冠心病、高血压及心力衰竭的规范化诊疗。</p>
+                        <a href="#" class="dept-link">查看详情 &rarr;</a>
+                    </div>
+                    <div class="dept-card">
+                        <h3>妇产科</h3>
+                        <p>提供孕前检查、产科保健及妇科微创手术，呵护母婴健康。</p>
+                        <a href="#" class="dept-link">查看详情 &rarr;</a>
+                    </div>
+                    <div class="dept-card">
+                        <h3>神经外科</h3>
+                        <p>集医疗、教学、科研于一体，开展颅脑外伤、脑肿瘤及脑血管病的治疗。</p>
+                        <a href="#" class="dept-link">查看详情 &rarr;</a>
+                    </div>
+                    <div class="dept-card">
+                        <h3>儿科</h3>
+                        <p>拥有经验丰富的儿科专家团队，专注于儿童常见病及疑难杂症的诊治。</p>
+                        <a href="#" class="dept-link">查看详情 &rarr;</a>
+                    </div>
+                    <div class="dept-card">
+                        <h3>急诊医学科</h3>
+                        <p>24小时全天候服务，配备急救直升机停机坪，为生命争取黄金时间。</p>
+                        <a href="#" class="dept-link">查看详情 &rarr;</a>
+                    </div>
+                    <div class="dept-card">
+                        <h3>口腔科</h3>
+                        <p>开展口腔种植、正畸及美学修复，让您重拾自信笑容。</p>
+                        <a href="#" class="dept-link">查看详情 &rarr;</a>
+                    </div>
+                    <div class="dept-card">
+                        <h3>康复医学科</h3>
+                        <p>中西医结合，提供物理治疗、作业治疗及康复训练，加速功能恢复。</p>
+                        <a href="#" class="dept-link">查看详情 &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <div class="container">
+                <div class="section-title">就医优势</div>
+                <div class="section-subtitle">为什么选择花都武警医院</div>
+                
+                <div class="features-grid">
+                    <div class="feature-box">
+                        <div class="feature-icon">🏥</div>
+                        <div class="feature-text">
+                            <h4>军队背景，品质保障</h4>
+                            <p>依托武警部队医疗资源，坚持“严谨、求实、博学、奉献”的作风，医疗质量过硬。</p>
+                        </div>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">🛡️</div>
+                        <div class="feature-text">
+                            <h4>安全保障，专业急救</h4>
+                            <p>作为区域性急救中心，具备强大的突发公共卫生事件应对能力和急救体系。</p>
+                        </div>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">🤝</div>
+                        <div class="feature-text">
+                            <h4>服务至上，人文关怀</h4>
+                            <p>推行“以患者为中心”的服务模式，优化就诊流程，提供温馨舒适的就医环境。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container" style="padding: 60px 20px;">
+            <div style="background-color: var(--primary-color); color: white; padding: 40px; border-radius: var(--border-radius); text-align: center;">
+                <h2 style="margin-bottom: 20px;">需要预约挂号？</h2>
+                <p style="margin-bottom: 30px; font-size: 1.1rem; opacity: 0.9;">点击下方按钮，即可快速预约专家号源，免去现场排队烦恼。</p>
+                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                    <a href="#" class="btn" style="background-color: white; color: var(--primary-color);">立即预约</a>
+                    <a href="#" class="btn" style="border: 1px solid white; color: white;">电话预约</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <p>花都武警医院是一所集医疗、教学、科研、预防保健为一体的大型综合性医院。医院拥有先进的医疗设备和经验丰富的专家团队，致力于为花都及周边地区居民提供优质、高效的医疗服务。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">医院概况</a></li>
+                        <li><a href="#">科室导航</a></li>
+                        <li><a href="#">专家团队</a></li>
+                        <li><a href="#">就医指南</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>便民服务</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">预约挂号</a></li>
+                        <li><a href="#">报告查询</a></li>
+                        <li><a href="#">停车指引</a></li>
+                        <li><a href="#">医院地图</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系方式</h4>
+                    <ul class="contact-info">
+                        <li><span>📍</span> 地址：广州市花都区新华街道迎宾大道123号</li>
+                        <li><span>📞</span> 电话：020-12345678</li>
+                        <li><span>📧</span> 邮箱：webmaster@hhdwjyy.com</li>
+                        <li><span>🕒</span> 门诊时间：8:00-12:00, 14:00-17:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 花都武警医院 版权所有 | 医疗广告审查证明号：(粤)医广[2024]第XX号</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+  </html>
