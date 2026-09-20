@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="积善网是一个专注于中华传统文化、民俗文化与道德修养的在线学习与交流平台。提供经典古籍推荐、家风家训解读、民俗礼仪指导及道德修身心得分享，致力于弘扬善行文化，构建和谐心灵家园。">
+    <meta name="keywords" content="积善网, 中华传统文化, 民俗文化, 家风家训, 道德修养, 经典古籍, 善行文化, 传统礼仪">
+    <title>积善网-中华传统文化与道德修养的线上家园</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #8B4513; /* SaddleBrown - Earthy, Traditional */
+            --secondary-color: #D2691E; /* Chocolate - Warmth */
+            --accent-color: #F5DEB3; /* Wheat - Light background */
+            --text-dark: #333333;
+            --text-light: #666666;
+            --bg-light: #FAF9F6; /* Off-white */
+            --white: #FFFFFF;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --radius: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", "SimSun", sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 60px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            font-size: 14px;
+            color: var(--text-light);
+            font-weight: normal;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--secondary-color);
+        }
+
+        .nav-cta {
+            background-color: var(--primary-color);
+            color: var(--white) !important;
+            padding: 8px 20px;
+            border-radius: 20px;
+        }
+
+        .nav-cta:hover {
+            background-color: var(--secondary-color);
+            color: var(--white) !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.05"><path d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/></g></g></svg>');
+            opacity: 0.4;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 35px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-primary {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Intro Section */
+        .intro {
+            background-color: var(--white);
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .intro-text h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .intro-text p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .intro-image img {
+            width: 100%;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid #eee;
+        }
+
+        /* Features */
+        .features {
+            background-color: var(--bg-light);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--text-dark);
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Content Categories */
+        .categories {
+            background-color: var(--white);
+        }
+
+        .cat-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .cat-tab {
+            padding: 8px 24px;
+            border: 1px solid #eee;
+            border-radius: 20px;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: all 0.3s;
+        }
+
+        .cat-tab.active, .cat-tab:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+        }
+
+        .category-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .category-content.active {
+            display: block;
+        }
+
+        .content-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .article-card {
+            border: 1px solid #eee;
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: var(--white);
+            transition: box-shadow 0.3s;
+        }
+
+        .article-card:hover {
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+
+        .article-thumb {
+            height: 160px;
+            background-color: #ddd;
+            position: relative;
+        }
+        
+        .article-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .article-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(139, 69, 19, 0.9);
+            color: white;
+            padding: 4px 10px;
+            font-size: 12px;
+            border-radius: 4px;
+        }
+
+        .article-body {
+            padding: 20px;
+        }
+
+        .article-title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .article-excerpt {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 15px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .read-more {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Quote Section */
+        .quote-section {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .quote-text {
+            font-size: 1.5rem;
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto 20px;
+        }
+
+        .quote-author {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        /* FAQ */
+        .faq {
+            background-color: var(--bg-light);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--white);
+            margin-bottom: 15px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .faq-question::after {
+            content: "+";
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .faq-item.open .faq-question::after {
+            content: "-";
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--text-light);
+            display: none;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 15px;
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c2c2c;
+            color: #ccc;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--white);
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                gap: 15px;
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .intro-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .intro-image {
+                order: -1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                积善网
+                <span>弘扬传统文化，修身养性</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#classic">经典古籍</a></li>
+                    <li><a href="#customs">民俗礼仪</a></li>
+                    <li><a href="#family">家风家训</a></li>
+                    <li><a href="#about">关于我们</a></li>
+                    <li><a href="#join" class="nav-cta">加入社区</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-content">
+                <h1>积善之家，必有余庆</h1>
+                <p>探索中华传统美德，学习古代先贤的智慧。在积善网，我们致力于为您梳理经典文化脉络，提供实用的修身指导与生活礼仪知识。</p>
+                <a href="#classic" class="btn btn-primary">开始阅读</a>
+            </div>
+        </section>
+
+        <!-- Intro Section -->
+        <section class="section-padding intro">
+            <div class="container intro-grid">
+                <div class="intro-text">
+                    <h2>传承千年智慧，涵养现代心灵</h2>
+                    <p>积善网是一个专注于中华优秀传统文化传播的公益性平台。我们相信，古老的智慧依然具有强大的生命力。通过深入挖掘《周易》、《论语》、《朱子家训》等经典著作中的精髓，并结合现代生活场景，我们帮助读者构建积极、健康、和谐的精神世界。</p>
+                    <p>无论您是想了解传统节日背后的深意，还是希望改善家庭关系，亦或是寻求内心的平静，这里都有您需要的答案。</p>
+                    <a href="#about" style="color: var(--secondary-color); font-weight: bold; margin-top: 10px; display: inline-block;">了解更多理念 &rarr;</a>
+                </div>
+                <div class="intro-image">
+                    <img src="https://picsum.photos/seed/taoism/600/400.jpg" alt="传统中式庭院与自然景观，寓意人与自然和谐共生">
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="section-padding features">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-title">核心服务</h2>
+                </div>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📖</div>
+                        <h3>经典导读</h3>
+                        <p>精选《三字经》、《千字文》、《弟子规》及诸子百家经典，提供白话文解读与现代应用指导。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🏮</div>
+                        <h3>民俗礼仪</h3>
+                        <p>详细介绍婚丧嫁娶、传统节日、祭祀仪式等民俗礼仪规范，传承文化习俗，不失传统韵味。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🏠</div>
+                        <h3>家风家训</h3>
+                        <p>分享历代名门望族的家风家训案例，帮助现代家庭建立良好的家庭文化，教育子女成才。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🤝</div>
+                        <h3>善行文化</h3>
+                        <p>倡导积德行善的处世哲学，通过社区互动和活动，鼓励用户在生活中践行善行，传递正能量。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Categories -->
+        <section id="classic" class="section-padding categories">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-title">精选内容</h2>
+                </div>
+                
+                <div class="cat-tabs">
+                    <div class="cat-tab active" onclick="switchTab('classic')">经典古籍</div>
+                    <div class="cat-tab" onclick="switchTab('festival')">传统节日</div>
+                    <div class="cat-tab" onclick="switchTab('cultivation')">修身养性</div>
+                </div>
+
+                <!-- Tab 1: Classic -->
+                <div id="classic" class="category-content active">
+                    <div class="content-list">
+                        <article class="article-card">
+                            <div class="article-thumb">
+                                <span class="article-tag">经典</span>
+                                <img src="https://picsum.photos/seed/book1/400/300.jpg" alt="《论语》书籍封面">
+                            </div>
+                            <div class="article-body">
+                                <h3 class="article-title"><a href="#">《论语》中的处世智慧：君子和而不同</a></h3>
+                                <p class="article-excerpt">深入解读孔子关于人际交往的核心思想，探讨如何在现代社会中保持独立人格与和谐共处的平衡。</p>
+                                <a href="#" class="read-more">阅读全文</a>
+                            </div>
+                        </article>
+                        <article class="article-card">
+                            <div class="article-thumb">
+                                <span class="article-tag">经典</span>
+                                <img src="https://picsum.photos/seed/book2/400/300.jpg" alt="《朱子家训》书籍封面">
+                            </div>
+                            <div class="article-body">
+                                <h3 class="article-title"><a href="#">《朱子家训》：齐家治国的行为准则</a></h3>
+                                <p class="article-excerpt">“黎明即起，洒扫庭除”。解析朱柏庐家训中关于勤俭持家、睦邻友好的具体做法。</p>
+                                <a href="#" class="read-more">阅读全文</a>
+                            </div>
+                        </article>
+                        <article class="article-card">
+                            <div class="article-thumb">
+                                <span class="article-tag">经典</span>
+                                <img src="https://picsum.photos/seed/book3/400/300.jpg" alt="《道德经》书籍封面">
+                            </div>
+                            <div class="article-body">
+                                <h3 class="article-title"><a href="#">道法自然：老子思想对现代生活的启示</a></h3>
+                                <p class="article-excerpt">探讨《道德经》中“上善若水”的哲学，学习如何在快节奏的生活中保持内心的宁静与坚韧。</p>
+                                <a href="#" class="read-more">阅读全文</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Festival -->
+                <div id="festival" class="category-content">
+                    <div class="content-list">
+                        <article class="article-card">
+                            <div class="article-thumb">
+                                <span class="article-tag">节日</span>
+                                <img src="https://picsum.photos/seed/lantern/400/300.jpg" alt="元宵节灯笼">
+                            </div>
+                            <div class="article-body">
+                                <h3 class="article-title"><a href="#">元宵节的起源与习俗：赏灯猜谜的乐趣</a></h3>
+                                <p class="article-excerpt">元宵节不仅是春节的结束，更是团圆的象征。了解元宵节的历史演变与各地特色活动。</p>
+                                <a href="#" class="read-more">阅读全文</a>
+                            </div>
+                        </article>
+                        <article class="article-card">
+                            <div class="article-thumb">
+                                <span class="article-tag">节日</span>
+                                <img src="https://picsum.photos/seed/lantern2/400/300.jpg" alt="端午节龙舟">
+                            </div>
+                            <div class="article-body">
+                                <h3 class="article-title"><a href="#">端午安康：纪念屈原与驱邪避疫的习俗</a></h3>
+                                <p class="article-excerpt">端午节挂艾草、佩香囊、吃粽子的背后，蕴含着古人祈求健康平安的美好愿望。</p>
+                                <a href="#" class="read-more">阅读全文</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Cultivation -->
+                <div id="cultivation" class="category-content">
+                    <div class="content-list">
+                        <article class="article-card">
+                            <div class="article-thumb">
+                                <span class="article-tag">修身</span>
+                                <img src="https://picsum.photos/seed/tea/400/300.jpg" alt="品茶">
+                            </div>
+                            <div class="article-body">
+                                <h3 class="article-title"><a href="#">静心品茶：一种传统的修身方式</a></h3>
+                                <p class="article-excerpt">茶道不仅是技艺，更是一种心境。学习如何通过泡茶、品茶来净化心灵，提升专注力。</p>
+                                <a href="#" class="read-more">阅读全文</a>
+                            </div>
+                        </article>
+                        <article class="article-card">
+                            <div class="article-thumb">
+                                <span class="article-tag">修身</span>
+                                <img src="https://picsum.photos/seed/qigong/400/300.jpg" alt="传统养生">
+                            </div>
+                            <div class="article-body">
+                                <h3 class="article-title"><a href="#">传统养生：顺应四时，调和阴阳</a></h3>
+                                <p class="article-excerpt">根据春夏秋冬的季节变化调整作息与饮食，是古人保持健康的重要智慧。</p>
+                                <a href="#" class="read-more">阅读全文</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quote Section -->
+        <section class="section-padding quote-section">
+            <div class="container">
+                <p class="quote-text">“积善之家，必有余庆；积不善之家，必有余殃。”</p>
+                <p class="quote-author">—— 《周易·坤文言》</p>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="about" class="section-padding faq">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-title">常见问题</h2>
+                </div>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">积善网的内容来源是什么？</div>
+                        <div class="faq-answer">
+                            积善网的内容主要基于中华传统经典古籍、历史文献以及现代学者对传统文化的整理与研究，旨在为用户提供准确、有价值的传统文化知识。
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">网站提供线下活动吗？</div>
+                        <div class="faq-answer">
+                            目前网站主要以线上内容传播为主，未来计划组织线下的国学讲座、文化体验活动，欢迎关注我们的动态。
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">如何参与社区交流？</div>
+                        <div class="faq-answer">
+                            您可以点击导航栏的“加入社区”按钮，注册成为会员，即可发表文章、分享心得并参与讨论。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>积善网</h4>
+                    <p style="font-size: 0.9rem; line-height: 1.8;">致力于弘扬中华优秀传统文化，为现代人提供精神滋养与行为准则。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速导航</h4>
+                    <ul>
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">经典古籍</a></li>
+                        <li><a href="#">民俗礼仪</a></li>
+                        <li><a href="#">家风家训</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#">网站简介</a></li>
+                        <li><a href="#">团队介绍</a></li>
+                        <li><a href="#">联系方式</a></li>
+                        <li><a href="#">免责声明</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关注我们</h4>
+                    <p style="font-size: 0.9rem;">微信公众号：积善文化</p>
+                    <p style="font-size: 0.9rem; margin-top: 5px;">邮箱：contact@jishanwang.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 积善网 版权所有 | 弘扬传统文化，共建精神家园</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Tab Switching Logic
+        function switchTab(tabId) {
+            // Hide all contents
+            const contents = document.querySelectorAll('.category-content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.cat-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Show selected content
+            document.getElementById(tabId).classList.add('active');
+
+            // Add active class to clicked tab (using event delegation or finding by index)
+            // For simplicity in this static example, we assume order matches or user clicks correctly.
+            // In a real app, we'd pass 'this' or use event listeners.
+            // Let's update the visual state based on the function call context if possible, 
+            // but since this is a simple script, we'll just leave the visual update to the click handler below.
+        }
+
+        // Add click event listeners to tabs for visual feedback
+        document.querySelectorAll('.cat-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Find the corresponding ID based on text content or index logic if needed
+                // For this demo, we rely on the onclick attribute calling switchTab with the ID
+                // We just need to update the 'active' class on the clicked element
+                document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // FAQ Accordion Logic
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const parent = item.parentElement;
+                parent.classList.toggle('open');
+            });
+        });
+    </script>
+</body>
+  </html>
