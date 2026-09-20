@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>51cg9热心的朝阳群众 - 社区互助与信息共享平台</title>
+    <meta name="description" content="51cg9热心的朝阳群众是一个专注于社区互助、信息共享与公共事务监督的互动平台。我们致力于汇聚热心市民力量，维护社区和谐，提供便民服务资讯与安全预警，共建文明网络空间。">
+    <meta name="keywords" content="51cg9热心的朝阳群众,社区互助,信息共享,公共监督,便民服务,网络社区">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #d32f2f; /* 朝阳红 */
+            --secondary-color: #fbc02d; /* 警示黄 */
+            --bg-color: #f5f7fa;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --border-radius: 8px;
+            --spacing-unit: 16px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .header-actions button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .header-actions button:hover {
+            opacity: 0.9;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            color: #b71c1c;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 32px;
+        }
+
+        .search-box {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius) 0 0 var(--border-radius);
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-box button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0 24px;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* Main Layout */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 32px var(--spacing-unit);
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 32px;
+        }
+
+        /* Sidebar */
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .sidebar-card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .sidebar-card h3 {
+            margin-bottom: 16px;
+            font-size: 18px;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 10px;
+        }
+
+        .category-list li {
+            margin-bottom: 10px;
+        }
+
+        .category-list a {
+            display: block;
+            padding: 6px 0;
+            color: var(--text-secondary);
+            border-bottom: 1px dashed #eee;
+        }
+
+        .category-list a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+            border-bottom-color: var(--primary-color);
+        }
+
+        .notice-item {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+        }
+
+        .notice-item::before {
+            content: "•";
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Content Area */
+        main {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .section-header h2 {
+            font-size: 22px;
+            color: var(--text-main);
+        }
+
+        .section-header a {
+            font-size: 14px;
+            color: var(--primary-color);
+        }
+
+        /* Grid System */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .card-image {
+            height: 180px;
+            background-color: #eee;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(0,0,0,0.7);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        .card-body {
+            padding: 16px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .card-excerpt {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            flex: 1;
+        }
+
+        .card-meta {
+            font-size: 12px;
+            color: #999;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* List View */
+        .list-view .card {
+            flex-direction: row;
+            height: auto;
+        }
+
+        .list-view .card-image {
+            width: 240px;
+            height: 160px;
+            flex-shrink: 0;
+        }
+
+        .list-view .card-body {
+            padding: 20px;
+        }
+
+        /* Alert Banner */
+        .alert-banner {
+            background-color: #fff3e0;
+            border-left: 5px solid var(--secondary-color);
+            padding: 16px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .alert-icon {
+            font-size: 24px;
+        }
+
+        .alert-content h4 {
+            color: #e65100;
+            margin-bottom: 4px;
+        }
+
+        .alert-content p {
+            font-size: 14px;
+            color: #ef6c00;
+        }
+
+        /* FAQ Section */
+        .faq-item {
+            background: var(--card-bg);
+            margin-bottom: 16px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 16px;
+            cursor: pointer;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fafafa;
+        }
+
+        .faq-question:hover {
+            background: #f0f0f0;
+        }
+
+        .faq-answer {
+            padding: 0 16px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 16px 16px;
+            max-height: 200px;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: "-";
+        }
+
+        .faq-item.active .faq-question::before {
+            content: "+";
+        }
+
+        /* Footer */
+        footer {
+            background-color: #263238;
+            color: #cfd8dc;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #37474f;
+            font-size: 13px;
+            color: #78909c;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                padding: 0 12px;
+            }
+
+            nav ul {
+                display: none; /* Hide nav on mobile for simplicity */
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .list-view .card {
+                flex-direction: column;
+            }
+
+            .list-view .card-image {
+                width: 100%;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                </svg>
+                <span>51cg9热心的朝阳群众</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">社区动态</a></li>
+                    <li><a href="#">互助求助</a></li>
+                    <li><a href="#">便民服务</a></li>
+                    <li><a href="#">安全预警</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button>发布信息</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <h1>汇聚群众力量，共建文明社区</h1>
+            <p>51cg9热心的朝阳群众致力于打造最透明、最活跃的本地生活互助社区。您的每一次参与，都是维护社区安全与和谐的重要力量。</p>
+            <div class="search-box">
+                <input type="text" placeholder="搜索社区公告、互助信息或安全事件...">
+                <button>搜索</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <aside>
+            <div class="sidebar-card">
+                <h3>社区分类</h3>
+                <ul class="category-list">
+                    <li><a href="#">治安监督</a></li>
+                    <li><a href="#">便民生活</a></li>
+                    <li><a href="#">失物招领</a></li>
+                    <li><a href="#">邻里互助</a></li>
+                    <li><a href="#">政策咨询</a></li>
+                    <li><a href="#">环境监督</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-card">
+                <h3>最新公告</h3>
+                <div class="notice-item">关于开展夏季治安巡逻的温馨提示</div>
+                <div class="notice-item">社区垃圾分类投放点调整通知</div>
+                <div class="notice-item">关于规范电动车停放管理的公告</div>
+                <div class="notice-item">社区志愿者招募令</div>
+            </div>
+
+            <div class="sidebar-card">
+                <h3>数据统计</h3>
+                <div style="text-align: center; padding: 10px 0;">
+                    <div style="font-size: 24px; color: var(--primary-color); font-weight: bold;">12,450</div>
+                    <div style="font-size: 12px; color: #666;">注册热心群众</div>
+                </div>
+                <div style="text-align: center; padding: 10px 0;">
+                    <div style="font-size: 24px; color: var(--secondary-color); font-weight: bold;">856</div>
+                    <div style="font-size: 12px; color: #666;">本月互助案例</div>
+                </div>
+            </div>
+        </aside>
+
+        <main>
+            <div class="alert-banner">
+                <div class="alert-icon">⚠</div>
+                <div class="alert-content">
+                    <h4>近期安全提示</h4>
+                    <p>近期社区出现多起电信诈骗案例，请广大居民提高警惕，切勿向陌生账户转账汇款。</p>
+                </div>
+            </div>
+
+            <section>
+                <div class="section-header">
+                    <h2>热门互助案例</h2>
+                    <a href="#">查看更多 &rarr;</a>
+                </div>
+                <div class="grid-3 list-view">
+                    <article class="card">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/51cg1/240/160" alt="社区巡逻">
+                            <span class="card-tag">治安</span>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">热心群众协助警方抓获可疑人员</h3>
+                            <p class="card-excerpt">本月10日，朝阳群众在巡逻中发现一名形迹可疑人员，及时报警并协助民警成功破获一起盗窃案。</p>
+                            <div class="card-meta">
+                                <span>来源：社区警务室</span>
+                                <span>2023-10-15</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/51cg2/240/160" alt="失物招领">
+                            <span class="card-tag">生活</span>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">失物招领：居民捡到身份证一张</h3>
+                            <p class="card-excerpt">在小区中心花园锻炼时捡到一个身份证，请失主联系物业认领，感谢您的拾金不昧。</p>
+                            <div class="card-meta">
+                                <span>来源：物业服务中心</span>
+                                <span>2023-10-14</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/51cg3/240/160" alt="邻里互助">
+                            <span class="card-tag">互助</span>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">为独居老人提供免费理发服务</h3>
+                            <p class="card-excerpt">社区爱心理发店响应号召，每周六上午为社区内60岁以上独居老人提供免费上门理发服务。</p>
+                            <div class="card-meta">
+                                <span>来源：爱心联盟</span>
+                                <span>2023-10-13</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-header">
+                    <h2>社区热议话题</h2>
+                    <a href="#">进入论坛 &rarr;</a>
+                </div>
+                <div class="grid-3">
+                    <article class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">关于小区加装电梯的讨论</h3>
+                            <p class="card-excerpt">低层住户对噪音和采光有顾虑，高层住户希望尽快解决出行难问题，大家怎么看？</p>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">推荐一家好吃的社区食堂</h3>
+                            <p class="card-excerpt">发现了一家新开的社区食堂，价格实惠，环境干净，适合老年人就餐，欢迎推荐。</p>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">宠物粪便清理倡议书</h3>
+                            <p class="card-excerpt">遛狗请牵绳并清理粪便，维护我们的共同家园，做文明的养宠人。</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-header">
+                    <h2>常见问题 (FAQ)</h2>
+                </div>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">如何成为“热心的朝阳群众”志愿者？</div>
+                        <div class="faq-answer">
+                            <p>您只需在官网点击“注册”或“登录”，填写真实个人信息并通过简单的身份认证即可。注册后即可参与社区巡防、信息上报等活动。</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">发现可疑情况应该怎么举报？</div>
+                        <div class="faq-answer">
+                            <p>您可以通过“一键报警”按钮直接联系辖区派出所，或在社区互助版块发布信息，我们会尽快核实处理。</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">发布的求助信息会被公开吗？</div>
+                        <div class="faq-answer">
+                            <p>求助信息默认为“仅对社区可见”，仅相关邻居或管理员可以看到。对于涉及公共安全的紧急信息，我们会酌情处理。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>关于51cg9</h4>
+                <p style="font-size: 14px; line-height: 1.8;">
+                    51cg9热心的朝阳群众致力于搭建政府与市民之间的沟通桥梁，鼓励公众参与社会治理，维护社区安全与稳定。
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>快速链接</h4>
+                <ul>
+                    <li><a href="#">社区公告</a></li>
+                    <li><a href="#">志愿者招募</a></li>
+                    <li><a href="#">安全知识</a></li>
+                    <li><a href="#">联系我们要</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>联系方式</h4>
+                <ul>
+                    <li>办公地址：北京市朝阳区XX路XX号</li>
+                    <li>联系电话：010-12345678</li>
+                    <li>电子邮箱：support@51cg9.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 51cg9热心的朝阳群众社区服务平台. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Toggle Logic
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all other items
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                
+                // Toggle current item
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+                  </html>
